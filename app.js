@@ -7,6 +7,16 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+
+
+
+var upload_pdf = require('./routes/upload_pdf');
+var process_pdf = require('./routes/process_pdf');
+// var take_picture = require('./routes/take_picture');
+// var upload_image = require('./routes/upload_image');
+
+
+
 var app = express();
 
 // view engine setup
@@ -21,6 +31,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
+
+
+app.use('/upload_pdf', upload_pdf);
+app.use('/process_pdf', process_pdf);
+// app.use('/take_picture', take_picture);
+// app.use('/upload_image', upload_image);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
