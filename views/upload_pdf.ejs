@@ -15,6 +15,8 @@
    }
 
     </style>
+
+ 
 </head>
 <body>
 
@@ -26,21 +28,39 @@
 
 
 
-        <form action="/process_pdf" enctype="multipart/form-data" method="post">
-
+        <form class="form-inline" action="/process_pdf" enctype="multipart/form-data" method="post">
 
             <div class="form-group">
-                <label>Upload File</label>
+                <label>Language</label>
+                <!-- <input type="text" name="language" class="form-control" placeholder="enter language of the text"> -->
+                <select class="form-control" name="language">
+                    <option value="ben">Bengali</option>
+                    <option value="eng">English</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Start</label>
+                <input type="number" min="0" name="start" class="form-control" placeholder="Start Page">
+            </div>
+
+            <div class="form-group">
+                <label>End</label>
+                <input type="number" min="0" name="end" class="form-control" placeholder="End Page">
+            </div>
+
+            <br><br> 
+            <div class="form-group">
+                <!-- <label>Upload File</label> -->
                 <input type="file"
                 name="pdf" 
-                accept=".pdf"
-                >
-                <p class="help-block">Only pdf files are allowed</p>
+                accept=".pdf">
+                <!-- <p class="help-block">Only pdf files are allowed</p> -->
             </div>
 
 
 
-            <button type="submit" class="btn btn-default">Submit</button>
+            <input type="submit" class="btn btn-default"></input>
         </form>
 
 
