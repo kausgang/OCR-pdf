@@ -7,8 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-
-
+var formidable = require('formidable');
+var bodyParser     =        require("body-parser");
 
 var upload_pdf = require('./routes/upload_pdf');
 var process_pdf = require('./routes/process_pdf');
@@ -33,9 +33,28 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use('/upload_pdf', upload_pdf);
+
+// app.post('/', function (req, res){
+//   var form = new formidable.IncomingForm();
+
+//   form.parse(req);
+
+//   form.on('fileBegin', function (name, file){
+//       file.path = path.join(__dirname , 'public/UPLOAD/' , file.name);
+//   });
+
+//   form.on('file', function (name, file){
+//       console.log('Uploaded ' + file.name);
+//   });
+
+//   // res.sendFile(__dirname + '/index.html');
+// });
+
+
 app.use('/process_pdf', process_pdf);
 // app.use('/take_picture', take_picture);
 // app.use('/upload_image', upload_image);
